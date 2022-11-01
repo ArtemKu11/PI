@@ -1,0 +1,26 @@
+{% extends 'base1.html' %}
+
+
+
+{% block work %}
+{{ super() }}
+<div class="downloadForm2">
+<div class="downloadForm">
+    <canvas class="canvas2"></canvas>
+</div>
+</div>
+<div class="errorText"></div>
+<div class="errorText2"></div>
+<div class="preFiles"></div>
+<div class="dButton Active">
+    <p>Начать</p>
+</div>
+<div class="toDbDiv">
+<!-- <div class="toDB">
+    <p>Сохранить в БД</p>
+</div> -->
+</div>
+<canvas class="canvas"></canvas>
+
+<script src="static/js/script.js"></script>
+{% endblock %}

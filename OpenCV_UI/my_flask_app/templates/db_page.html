@@ -1,0 +1,34 @@
+<div class="forMargin">
+{% if db_count == 0 -%}
+<div class="resNone">
+<span>База данных пуста</span>
+</div>
+{% else -%}
+<!-- <div class="resNeNone"> -->
+<table class="resTable", cellspacing="0">
+<tr>
+    <td>id</td><td>Название файла</td><td>Дата загрузки</td><td>Время загрузки</td><td>Результат распознавания</td><td>Ссылка</td>
+</tr>    
+{% for i in range(10) -%}
+{% if 0 <= i < viborka|length -%}
+<tr>
+    <td>{{ viborka[i].id }}</td><td>{{ viborka[i].image_name }}</td><td>{{ viborka[i].date }}</td><td>{{ viborka[i].time }}</td><td>{{ viborka[i].result }}</td><td><a class="dlLink", href="/download/{{ viborka[i].key }}">Скачать</a></td>
+</tr>
+{% else -%}
+<tr>
+    <td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+{% endif -%}
+{% endfor -%}
+</table>
+<!-- </div> -->
+{% endif -%}
+<div class="buttons">
+<div class="firstButton">
+    <p>Пред. стр.</p>
+</div>
+<div class="secondButton">
+    <p>След. стр.</p>
+</div>
+</div>
+</div>

@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.page {
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+.work {
+    height: 100vh;
+    background-color: #f0f0ff;
+    margin: 0 0 0 300px;
+    /* padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px; */
+    
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    
+    
+    
+}
+
+.left {
+    height: 100%;
+    width: 300px;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    z-index: 1;
+    border-right-style: solid;
+    border-color: #834e9c;
+    border-width: 1px;
+    }
+
+.link_text {
+    font-family: sans-serif;
+    color: #5c5c5c;
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    padding-left: 72px;
+    line-height: 60px;
+    font-size: 1.45em;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #FFFFFF;
+    border-width: 1px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+
+
+.link_text:hover {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #834e9c;
+    color: #834e9c;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.active_link_text {
+    font-family: sans-serif;
+    color: #834e9c;
+    width: 100%;
+    height: 60px;
+    padding-left: 67px;
+    line-height: 62px;
+    font-size: 1.45em;
+    cursor: pointer;
+    border-left-style: solid;
+    border-color: #834e9c;
+    border-width: 5px;
+}
+
+.ajax_link {
+    font-family: sans-serif;
+    color: #5c5c5c;
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    padding-left: 72px;
+    line-height: 60px;
+    font-size: 1.45em;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #FFFFFF;
+    border-width: 1px;
+    user-select: none;
+}
+
+
+.ajax_link:hover {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #834e9c;
+    color: #834e9c;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+
+.indent1 {
+    background-color: #FFFFFF;
+    height: 30%;
+}
+
+.indent2 {
+    background-color: #FFFFFF;
+    height: 25%;
+}
+
+
+.refresh {
+    background-color: #834e9c;
+    height: 60px;
+
+}
+
+.downloadForm {
+    background-color: #FFFFFF;
+    width: 642px;
+    height: 482px;
+    border-style: solid;
+    border-color: #834e9c;
+    border-width: 1px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.downloadForm.active {
+    border-style: dashed;
+}
+
+.downloadForm2 {
+    display: flex;
+    justify-content:center;
+    margin-top: 150px;
+}
+
+
+
+
+.dButton {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: #B3B3B3;
+    border-width: 1px;
+    width: 150px;
+    height: 30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #B3B3B3;
+}
+
+
+.dButton.Active {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: #834e9c;
+    border-width: 1px;
+    width: 150px;
+    height: 30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #834e9c;
+
+}
+
+.dButton.Active:hover {
+    cursor: pointer;
+    background-color: #834e9c;
+    color:#FFFFFF;
+}
+
+
+.toDB {
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: #834e9c;
+    border-width: 1px;
+    width: 150px;
+    height: 30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #834e9c;
+}
+
+.toDB:hover {
+    cursor: pointer;
+    background-color: #834e9c;
+    color:#FFFFFF;
+}
+
+
+.errorText {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #A70707;
+    width: 640px;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.errorText.Green {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #3ad613;
+    width: 800px;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.errorText2 {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #A70707;
+    width: 640px;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.toGreen {
+    color: #00ff00;
+}
+
+
+.forMargin {
+    padding: 15%;
+    height: 100vh;
+    /* overflow-x: hidden; */
+}
+
+
+.resNone {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #5c5c5c;
+    background-color: #FFFFFF;
+    min-height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #834e9c;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.resNeNone {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #5c5c5c;
+    background-color: #FFFFFF;
+    min-height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #834e9c;
+}
+
+.resTable {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #5c5c5c;
+    background-color: #FFFFFF;
+    width: 100%;
+    min-height: 100%;
+    text-align: center;
+    word-break: break-word;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-width: 1px;
+    border-color: #834e9c;
+}
+
+.resTable td {
+    height: 9.09%;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-width: 1px;
+    border-color: #834e9c;
+    padding: 10px;
+}
+
+
+.resTable tr:first-child {
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+
+
+.resLink {
+    text-decoration: none;
+    color: #5c5c5c;
+}
+
+.resLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.resLink:focus {
+    outline: none;
+    text-decoration: underline;
+}
+
+.firstButton {
+    display: inline-block;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: #834e9c;
+    border-width: 1px;
+    width: 150px;
+    height: 30px;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #834e9c;
+    text-align: center;
+    line-height: 30px;
+    user-select: none;
+}
+
+.firstButton_Passive {
+    display: inline-block;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: #B3B3B3;
+    border-width: 1px;
+    width: 150px;
+    height: 30px;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #B3B3B3;
+    text-align: center;
+    line-height: 30px;
+    user-select: none;
+}
+
+.secondButton_Passive {
+    display: inline-block;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: #B3B3B3;
+    border-width: 1px;
+    width: 150px;
+    height: 30px;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #B3B3B3;
+    text-align: center;
+    line-height: 30px;
+    user-select: none;
+    margin-left: 50px;
+}
+
+.secondButton {
+    display: inline-block;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: #834e9c;
+    border-width: 1px;
+    width: 150px;
+    height: 30px;
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #834e9c;
+    text-align: center;
+    line-height: 30px;
+    margin-left: 50px;
+    user-select: none;
+}
+
+.buttons {
+    text-align: center;
+}
+
+
+.firstButton:hover {
+    cursor: pointer;
+    background-color: #834e9c;
+    color:#FFFFFF;
+}
+
+.secondButton:hover {
+    cursor: pointer;
+    background-color: #834e9c;
+    color:#FFFFFF;
+}
+
+.dlLink {
+    text-decoration: none;
+    color: #5c5c5c;
+    font-weight: bolder;
+}
+
+.dlLink:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.dlLink:focus {
+    outline: none;
+    text-decoration: underline;
+}
+
+.canvas {
+    display: none;
+}
+
+
+.refreshButton {
+    font-family: sans-serif;
+    color: #5c5c5c;
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    padding-left: 72px;
+    line-height: 60px;
+    font-size: 1.45em;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #FFFFFF;
+    border-width: 1px;
+    user-select: none;
+}
+
+
+.refreshButton:hover {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #834e9c;
+    color: #834e9c;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.refreshButtonLClick {
+    font-family: sans-serif;
+    color: #834e9c;
+    width: 100%;
+    height: 60px;
+    padding-left: 67px;
+    line-height: 60px;
+    font-size: 1.45em;
+    cursor: pointer;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: #834e9c;
+    border-left-width: 5px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    user-select: none;
+}
