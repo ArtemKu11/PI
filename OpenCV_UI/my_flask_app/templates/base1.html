@@ -5,38 +5,38 @@
     {% block title -%}
     <title>{{ temp }}</title>
     {% endblock %}
-    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <script src="static/js/jquery.js"></script>
 </head>
 <body>
 <div class="page">
-    
-<div class="left">
-    <p class="indent1"></p>
-    {% block left -%}
-    {% for m in menu -%}
-    {% if m.name == temp -%}
-        <p class="active_link_text"> {{m.name}}</p>
-    {% elif m.name == 'База данных' -%}
-        {% if temp == 'Начать работу' -%}
-            <p class="ajax_link"> {{m.name}}</p>
-        {% else -%}
-            {{ continue }}
-        {% endif -%}
-    {% else -%}
-        <a class="link" href="{{m.url}}"><p class="link_text"> {{m.name}}</p></a>
-    {% endif -%}
-    {% endfor -%}
-    {% endblock %}
-    <p class="indent2"></p>
-    <p class="refreshButton">Очистить БД</p>
-</div>
 
-<div class="work">
-    {% block work -%}
-    {% endblock %}
-</div>
+    <div class="left">
+        <p class="indent1"></p>
+        {% block left -%}
+        {% for m in menu -%}
+        {% if m.name == temp -%}
+        <p class="active_link_text"> {{m.name}}</p>
+        {% elif m.name == 'База данных' -%}
+        {% if temp == 'Начать работу' -%}
+        <p class="ajax_link"> {{m.name}}</p>
+        {% else -%}
+        {{ continue }}
+        {% endif -%}
+        {% else -%}
+        <a class="link" href="{{m.url}}"><p class="link_text"> {{m.name}}</p></a>
+        {% endif -%}
+        {% endfor -%}
+        {% endblock %}
+        <p class="indent2"></p>
+        <p class="refreshButton">Очистить БД</p>
+    </div>
+
+    <div class="work">
+        {% block work -%}
+        {% endblock %}
+    </div>
 </div>
 </body>
 

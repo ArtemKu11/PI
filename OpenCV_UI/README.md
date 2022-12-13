@@ -1,4 +1,5 @@
 Запуск:
+
 main_file.py
 либо в дир. с Dockerfile
 docker build -t flask_app .

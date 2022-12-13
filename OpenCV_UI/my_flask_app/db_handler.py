@@ -6,7 +6,7 @@ from datetime import datetime
 from app_creator import db, app
 
 
-class Table(db.Model): # Таблица БД
+class Table(db.Model):  # Таблица БД
     id = db.Column(db.Integer, primary_key=True)
     image_name = db.Column(db.String(50))
     date = db.Column(db.String(50))
@@ -20,8 +20,8 @@ with app.app_context():
     db.create_all()
 
 
-def save_to_db(image, result, counter): # Сохранение картинки в БД
-    
+def save_to_db(image, result, counter):  # Сохранение картинки в БД
+
     key = random.getrandbits(128)
     key = "%032x" % key
 
@@ -40,7 +40,7 @@ def save_to_db(image, result, counter): # Сохранение картинки 
     elif result == 'to_screen':
         result = 'Экран'
     try:
-        t = Table(image_name = image_name, date = current_date, time = current_time, result = result, file = image, key = key)
+        t = Table(image_name=image_name, date=current_date, time=current_time, result=result, file=image, key=key)
         db.session.add(t)
         db.session.commit()
         db_success = 'true'
@@ -52,7 +52,7 @@ def save_to_db(image, result, counter): # Сохранение картинки 
     return db_success
 
 
-def get_file(key): # Возврат io.Bytes-файла по ключу
+def get_file(key):  # Возврат io.Bytes-файла по ключу
     file_temp = Table.query.filter(Table.key == key).all()
     file = file_temp[0].file
     file = base64.b64encode(file)
@@ -61,12 +61,12 @@ def get_file(key): # Возврат io.Bytes-файла по ключу
     return (file, file_temp[0].image_name)
 
 
-def clean_db(): # Очистка БД
+def clean_db():  # Очистка БД
     db.session.query(Table).delete(synchronize_session="fetch")
     db.session.commit()
 
 
-def get_some_strings(db_counter): # Подгрузка строк из БД
+def get_some_strings(db_counter):  # Подгрузка строк из БД
     db_count = db.session.query(Table.id).count()
     viborka = Table.query.filter(Table.id <= db_count - db_counter).order_by(Table.id.desc()).limit(10).all()
     db.session.commit()

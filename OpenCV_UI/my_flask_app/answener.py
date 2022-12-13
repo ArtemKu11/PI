@@ -7,24 +7,23 @@ from tensorflow.keras.models import load_model
 from db_handler import get_some_strings, save_to_db, clean_db, get_file
 from magic import for_flask
 
+model = load_model('neuroset_full.h5')  # Нейросеть для определения направления взгляда
+eyeCascade = cv2.CascadeClassifier('haarcascade_eye.xml')  # Штука для определения глаз
 
-model = load_model('neuroset_full.h5') # Нейросеть для определения направления взгляда
-eyeCascade = cv2.CascadeClassifier('haarcascade_eye.xml') # Штука для определения глаз
 
-
-def kind_of_request(request, key, refresh): # Классификатор запросов
+def kind_of_request(request, key, refresh):  # Классификатор запросов
     if request.method == 'POST':
-        return Answer_A(request) # Основной запрос
+        return Answer_A(request)  # Основной запрос
     if request.method == 'GET':
         if refresh == 'true':
-            return Answer_B() # Очистить БД
+            return Answer_B()  # Очистить БД
         if key != None:
-            return Answer_C(key) # Скачать файл
+            return Answer_C(key)  # Скачать файл
         else:
-            return Answer_D(request) # Подгрузить ДБ
+            return Answer_D(request)  # Подгрузить ДБ
 
 
-class Answer_A(): # Основной запрос на обработку изображения с возможностью сохранения его в БД
+class Answer_A():  # Основной запрос на обработку изображения с возможностью сохранения его в БД
 
     def __init__(self, req):
         self.json_dict = {}
@@ -40,13 +39,11 @@ class Answer_A(): # Основной запрос на обработку изо
         self.imgg = req.form.get('image')
         self.shapka = self.imgg[:22]
         self.imgg = self.imgg[22:]
-    
 
     def make_answer(self):
         image = base64.b64decode(self.imgg)
         xz_chto = np.fromstring(image, np.uint8)
-        xz_chto = cv2.imdecode(xz_chto,cv2.IMREAD_UNCHANGED)
-
+        xz_chto = cv2.imdecode(xz_chto, cv2.IMREAD_UNCHANGED)
 
         xz_chto, self.json_dict = for_flask(xz_chto, eyeCascade, model, self.json_dict)
 
@@ -69,52 +66,42 @@ class Answer_A(): # Основной запрос на обработку изо
                 'result': self.json_dict['result'],
                 'db_success': self.json_dict['db_success'],
                 "type": "success"}
-    
 
     def __repr__(self):
         return f"request for image detection with save_to_db flag = {self.json_dict['save_to_db']}"
-        
 
 
-class Answer_B(): # Запрос на очистку базы данных
-
+class Answer_B():  # Запрос на очистку базы данных
 
     def make_answer(self):
         clean_db()
         return {"text": "Успешно"}
 
-
     def __repr__(self):
         return f"request to clean database"
 
 
-class Answer_C(): # Запрос на ссылку для скачивания
-
+class Answer_C():  # Запрос на ссылку для скачивания
 
     def __init__(self, key):
         self.key = key
 
-
     def __repr__(self):
         return f"request to download link, key = {self.key}"
 
-
     def make_answer(self):
         file = get_file(self.key)
-        return send_file(file[0], download_name=file[1], mimetype='image/png', as_attachment = True)
+        return send_file(file[0], download_name=file[1], mimetype='image/png', as_attachment=True)
 
 
-class Answer_D(): # Подгрузить 10 позиций ДБ
-
+class Answer_D():  # Подгрузить 10 позиций ДБ
 
     def __init__(self, req):
         self.db_counter = int(req.args['db_counter'])
 
-    
     def __repr__(self):
         return f"request to get some database positions, db_counter = {self.db_counter}"
-        
-        
+
     def make_answer(self):
         viborka, db_count = get_some_strings(self.db_counter)
         if len(viborka) > 0:
@@ -124,7 +111,3 @@ class Answer_D(): # Подгрузить 10 позиций ДБ
         return {'text': render_template('db_page.html', db_count=db_count - self.db_counter, viborka=viborka),
                 'total': db_count,
                 'first_in_table': first_in_table}
-
-
-
-
